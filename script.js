@@ -1,27 +1,16 @@
-// Scroll morbido al click del bottone
-document.getElementById("cta").addEventListener("click", () => {
-  document.getElementById("about").scrollIntoView({
-    behavior: "smooth",
-  });
-});
-
-// Animazione comparsa cards
-const cards = document.querySelectorAll(".card");
+// Scroll reveal
+const reveals = document.querySelectorAll(".reveal");
 
 window.addEventListener("scroll", () => {
-  const triggerBottom = window.innerHeight * 0.85;
-
-  cards.forEach((card) => {
-    const cardTop = card.getBoundingClientRect().top;
-    if (cardTop < triggerBottom) {
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
+  const trigger = window.innerHeight * 0.85;
+  reveals.forEach((el) => {
+    if (el.getBoundingClientRect().top < trigger) {
+      el.classList.add("active");
     }
   });
 });
 
-// Stato iniziale animazioni
-cards.forEach((card) => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(30px)";
+// CTA scroll
+document.getElementById("cta").addEventListener("click", () => {
+  document.getElementById("about").scrollIntoView({ behavior: "smooth" });
 });
